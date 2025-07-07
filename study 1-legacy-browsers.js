@@ -2761,9 +2761,9 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'thanks_text',
     text: 'Thanks for participating in our experiment! \n\nThis was a study designed to determine your mental representation of how the \'typical\' police officer views Black men. The images you saw were in fact the same base image every time, but with different noise patterns overlaid to obscure small parts of the face and enhance others. \n\nThese images will be averaged together to come up with a "classification" image that shows the average representation people have of how police mentally represent Black men, or at least how people perceive them to.\n\nShould you have any further questions, please contact the experimenters listed on the hosting platform or on the consent form.',
-    font: 'Arial',
+    font: 'Avenir Next',
     units: undefined, 
-    pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: 0.0 
