@@ -55,6 +55,15 @@ flowScheduler.add(img_gen_trials_loopLoopScheduler);
 flowScheduler.add(img_gen_trials_loopLoopEnd);
 
 
+flowScheduler.add(ill_intent_promptRoutineBegin());
+flowScheduler.add(ill_intent_promptRoutineEachFrame());
+flowScheduler.add(ill_intent_promptRoutineEnd());
+const ill_intent_loopLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(ill_intent_loopLoopBegin(ill_intent_loopLoopScheduler));
+flowScheduler.add(ill_intent_loopLoopScheduler);
+flowScheduler.add(ill_intent_loopLoopEnd);
+
+
 flowScheduler.add(individual_diff_introRoutineBegin());
 flowScheduler.add(individual_diff_introRoutineEachFrame());
 flowScheduler.add(individual_diff_introRoutineEnd());
@@ -1618,6 +1627,7 @@ psychoJS.start({
     {'name': 'stimuli/rcic_base_1_00249_ori.png', 'path': 'stimuli/rcic_base_1_00249_ori.png'},
     {'name': 'stimuli/rcic_base_1_00250_inv.png', 'path': 'stimuli/rcic_base_1_00250_inv.png'},
     {'name': 'stimuli/rcic_base_1_00250_ori.png', 'path': 'stimuli/rcic_base_1_00250_ori.png'},
+    {'name': 'ill_intent.xlsx', 'path': 'ill_intent.xlsx'},
     {'name': 'blocks_conditions.xlsx', 'path': 'blocks_conditions.xlsx'},
     {'name': 'police_fight_flight.xlsx', 'path': 'police_fight_flight.xlsx'},
     {'name': 'police_avoidance.xlsx', 'path': 'police_avoidance.xlsx'},
@@ -1674,6 +1684,20 @@ var choice_text;
 var image_choice;
 var left_sign;
 var right_sign;
+var ill_intent_promptClock;
+var ii_prompt;
+var ill_intent_blockClock;
+var ii_question;
+var ii_one;
+var ii_two;
+var ii_three;
+var ii_four;
+var ii_five;
+var ii_six;
+var ii_seven;
+var ii_resp;
+var ii_min;
+var ii_max;
 var individual_diff_introClock;
 var individual_diffs_instructions;
 var begin_individual_diffs;
@@ -1871,6 +1895,144 @@ async function experimentInit() {
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: -5.0 
+  });
+  
+  // Initialize components for Routine "ill_intent_prompt"
+  ill_intent_promptClock = new util.Clock();
+  ii_prompt = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_prompt',
+    text: "Thank you for your responses!\n\nWe would now like to understand how you perceive the police offer's intent..",
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  // Initialize components for Routine "ill_intent_block"
+  ill_intent_blockClock = new util.Clock();
+  ii_question = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_question',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, 250], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  ii_one = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_one',
+    text: '1',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 300), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+  ii_two = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_two',
+    text: '2',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 200), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -2.0 
+  });
+  
+  ii_three = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_three',
+    text: '3',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 100), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -3.0 
+  });
+  
+  ii_four = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_four',
+    text: '4',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -4.0 
+  });
+  
+  ii_five = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_five',
+    text: '5',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [100, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -5.0 
+  });
+  
+  ii_six = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_six',
+    text: '6',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [200, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -6.0 
+  });
+  
+  ii_seven = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_seven',
+    text: '7',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [300, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -7.0 
+  });
+  
+  ii_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  ii_min = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_min',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 300), 10], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -9.0 
+  });
+  
+  ii_max = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'ii_max',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [300, 10], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -10.0 
   });
   
   // Initialize components for Routine "individual_diff_intro"
@@ -2965,6 +3127,70 @@ function img_gen_trials_loopLoopEndIteration(scheduler, snapshot) {
 }
 
 
+var ill_intent_loop;
+function ill_intent_loopLoopBegin(ill_intent_loopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    ill_intent_loop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 1, method: TrialHandler.Method.RANDOM,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: 'ill_intent.xlsx',
+      seed: undefined, name: 'ill_intent_loop'
+    });
+    psychoJS.experiment.addLoop(ill_intent_loop); // add the loop to the experiment
+    currentLoop = ill_intent_loop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    ill_intent_loop.forEach(function() {
+      snapshot = ill_intent_loop.getSnapshot();
+    
+      ill_intent_loopLoopScheduler.add(importConditions(snapshot));
+      ill_intent_loopLoopScheduler.add(ill_intent_blockRoutineBegin(snapshot));
+      ill_intent_loopLoopScheduler.add(ill_intent_blockRoutineEachFrame());
+      ill_intent_loopLoopScheduler.add(ill_intent_blockRoutineEnd(snapshot));
+      ill_intent_loopLoopScheduler.add(ill_intent_loopLoopEndIteration(ill_intent_loopLoopScheduler, snapshot));
+    });
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function ill_intent_loopLoopEnd() {
+  // terminate loop
+  psychoJS.experiment.removeLoop(ill_intent_loop);
+  // update the current loop from the ExperimentHandler
+  if (psychoJS.experiment._unfinishedLoops.length>0)
+    currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
+  else
+    currentLoop = psychoJS.experiment;  // so we use addData from the experiment
+  return Scheduler.Event.NEXT;
+}
+
+
+function ill_intent_loopLoopEndIteration(scheduler, snapshot) {
+  // ------Prepare for next entry------
+  return async function () {
+    if (typeof snapshot !== 'undefined') {
+      // ------Check if user ended loop early------
+      if (snapshot.finished) {
+        // Check for and save orphaned data
+        if (psychoJS.experiment.isEntryEmpty()) {
+          psychoJS.experiment.nextEntry(snapshot);
+        }
+        scheduler.stop();
+      } else {
+        psychoJS.experiment.nextEntry(snapshot);
+      }
+    return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
 var scales_loop;
 function scales_loopLoopBegin(scales_loopLoopScheduler, snapshot) {
   return async function() {
@@ -3818,6 +4044,344 @@ function img_generationRoutineEnd(snapshot) {
     
     image_choice.stop();
     // the Routine "img_generation" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var ill_intent_promptMaxDurationReached;
+var ill_intent_promptMaxDuration;
+var ill_intent_promptComponents;
+function ill_intent_promptRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'ill_intent_prompt' ---
+    t = 0;
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    ill_intent_promptClock.reset();
+    routineTimer.reset();
+    ill_intent_promptMaxDurationReached = false;
+    // update component parameters for each repeat
+    psychoJS.experiment.addData('ill_intent_prompt.started', globalClock.getTime());
+    ill_intent_promptMaxDuration = null
+    // keep track of which components have finished
+    ill_intent_promptComponents = [];
+    ill_intent_promptComponents.push(ii_prompt);
+    
+    ill_intent_promptComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function ill_intent_promptRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'ill_intent_prompt' ---
+    // get current time
+    t = ill_intent_promptClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *ii_prompt* updates
+    if (frameN >= 0.0 && ii_prompt.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_prompt.tStart = t;  // (not accounting for frame time here)
+      ii_prompt.frameNStart = frameN;  // exact frame index
+      
+      ii_prompt.setAutoDraw(true);
+    }
+    
+    if (ii_prompt.status === PsychoJS.Status.STARTED && frameN >= 300) {
+      ii_prompt.setAutoDraw(false);
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    ill_intent_promptComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function ill_intent_promptRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'ill_intent_prompt' ---
+    ill_intent_promptComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    psychoJS.experiment.addData('ill_intent_prompt.stopped', globalClock.getTime());
+    // the Routine "ill_intent_prompt" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var ill_intent_blockMaxDurationReached;
+var _ii_resp_allKeys;
+var ill_intent_blockMaxDuration;
+var ill_intent_blockComponents;
+function ill_intent_blockRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'ill_intent_block' ---
+    t = 0;
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    ill_intent_blockClock.reset();
+    routineTimer.reset();
+    ill_intent_blockMaxDurationReached = false;
+    // update component parameters for each repeat
+    ii_question.setText(question);
+    ii_resp.keys = undefined;
+    ii_resp.rt = undefined;
+    _ii_resp_allKeys = [];
+    ii_min.setText(minimum);
+    ii_max.setText(maximum);
+    psychoJS.experiment.addData('ill_intent_block.started', globalClock.getTime());
+    ill_intent_blockMaxDuration = null
+    // keep track of which components have finished
+    ill_intent_blockComponents = [];
+    ill_intent_blockComponents.push(ii_question);
+    ill_intent_blockComponents.push(ii_one);
+    ill_intent_blockComponents.push(ii_two);
+    ill_intent_blockComponents.push(ii_three);
+    ill_intent_blockComponents.push(ii_four);
+    ill_intent_blockComponents.push(ii_five);
+    ill_intent_blockComponents.push(ii_six);
+    ill_intent_blockComponents.push(ii_seven);
+    ill_intent_blockComponents.push(ii_resp);
+    ill_intent_blockComponents.push(ii_min);
+    ill_intent_blockComponents.push(ii_max);
+    
+    ill_intent_blockComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function ill_intent_blockRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'ill_intent_block' ---
+    // get current time
+    t = ill_intent_blockClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *ii_question* updates
+    if (frameN >= 0.0 && ii_question.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_question.tStart = t;  // (not accounting for frame time here)
+      ii_question.frameNStart = frameN;  // exact frame index
+      
+      ii_question.setAutoDraw(true);
+    }
+    
+    
+    // *ii_one* updates
+    if (frameN >= 0.0 && ii_one.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_one.tStart = t;  // (not accounting for frame time here)
+      ii_one.frameNStart = frameN;  // exact frame index
+      
+      ii_one.setAutoDraw(true);
+    }
+    
+    
+    // *ii_two* updates
+    if (frameN >= 0.0 && ii_two.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_two.tStart = t;  // (not accounting for frame time here)
+      ii_two.frameNStart = frameN;  // exact frame index
+      
+      ii_two.setAutoDraw(true);
+    }
+    
+    
+    // *ii_three* updates
+    if (frameN >= 0.0 && ii_three.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_three.tStart = t;  // (not accounting for frame time here)
+      ii_three.frameNStart = frameN;  // exact frame index
+      
+      ii_three.setAutoDraw(true);
+    }
+    
+    
+    // *ii_four* updates
+    if (frameN >= 0.0 && ii_four.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_four.tStart = t;  // (not accounting for frame time here)
+      ii_four.frameNStart = frameN;  // exact frame index
+      
+      ii_four.setAutoDraw(true);
+    }
+    
+    
+    // *ii_five* updates
+    if (frameN >= 0.0 && ii_five.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_five.tStart = t;  // (not accounting for frame time here)
+      ii_five.frameNStart = frameN;  // exact frame index
+      
+      ii_five.setAutoDraw(true);
+    }
+    
+    
+    // *ii_six* updates
+    if (frameN >= 0.0 && ii_six.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_six.tStart = t;  // (not accounting for frame time here)
+      ii_six.frameNStart = frameN;  // exact frame index
+      
+      ii_six.setAutoDraw(true);
+    }
+    
+    
+    // *ii_seven* updates
+    if (frameN >= 0.0 && ii_seven.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_seven.tStart = t;  // (not accounting for frame time here)
+      ii_seven.frameNStart = frameN;  // exact frame index
+      
+      ii_seven.setAutoDraw(true);
+    }
+    
+    
+    // *ii_resp* updates
+    if (frameN >= 0.0 && ii_resp.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_resp.tStart = t;  // (not accounting for frame time here)
+      ii_resp.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { ii_resp.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { ii_resp.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { ii_resp.clearEvents(); });
+    }
+    
+    if (ii_resp.status === PsychoJS.Status.STARTED) {
+      let theseKeys = ii_resp.getKeys({keyList: ['1', '2', '3', '4', '5', '6', '7'], waitRelease: false});
+      _ii_resp_allKeys = _ii_resp_allKeys.concat(theseKeys);
+      if (_ii_resp_allKeys.length > 0) {
+        ii_resp.keys = _ii_resp_allKeys[_ii_resp_allKeys.length - 1].name;  // just the last key pressed
+        ii_resp.rt = _ii_resp_allKeys[_ii_resp_allKeys.length - 1].rt;
+        ii_resp.duration = _ii_resp_allKeys[_ii_resp_allKeys.length - 1].duration;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+    
+    // *ii_min* updates
+    if (frameN >= 0.0 && ii_min.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_min.tStart = t;  // (not accounting for frame time here)
+      ii_min.frameNStart = frameN;  // exact frame index
+      
+      ii_min.setAutoDraw(true);
+    }
+    
+    
+    // *ii_max* updates
+    if (frameN >= 0.0 && ii_max.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      ii_max.tStart = t;  // (not accounting for frame time here)
+      ii_max.frameNStart = frameN;  // exact frame index
+      
+      ii_max.setAutoDraw(true);
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    ill_intent_blockComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function ill_intent_blockRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'ill_intent_block' ---
+    ill_intent_blockComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    psychoJS.experiment.addData('ill_intent_block.stopped', globalClock.getTime());
+    // update the trial handler
+    if (currentLoop instanceof MultiStairHandler) {
+      currentLoop.addResponse(ii_resp.corr, level);
+    }
+    psychoJS.experiment.addData('ii_resp.keys', ii_resp.keys);
+    if (typeof ii_resp.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('ii_resp.rt', ii_resp.rt);
+        psychoJS.experiment.addData('ii_resp.duration', ii_resp.duration);
+        routineTimer.reset();
+        }
+    
+    ii_resp.stop();
+    // the Routine "ill_intent_block" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row
