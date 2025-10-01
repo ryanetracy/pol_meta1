@@ -70,10 +70,10 @@ flowScheduler.add(pff_loopLoopScheduler);
 flowScheduler.add(pff_loopLoopEnd);
 
 
-const pa_loopLoopScheduler = new Scheduler(psychoJS);
-flowScheduler.add(pa_loopLoopBegin(pa_loopLoopScheduler));
-flowScheduler.add(pa_loopLoopScheduler);
-flowScheduler.add(pa_loopLoopEnd);
+const gblems_exp_loopLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(gblems_exp_loopLoopBegin(gblems_exp_loopLoopScheduler));
+flowScheduler.add(gblems_exp_loopLoopScheduler);
+flowScheduler.add(gblems_exp_loopLoopEnd);
 
 
 flowScheduler.add(individual_diff_introRoutineBegin());
@@ -1635,10 +1635,10 @@ psychoJS.start({
     {'name': 'stimuli/rcic_base_1_00250_ori.png', 'path': 'stimuli/rcic_base_1_00250_ori.png'},
     {'name': 'ill_intent.xlsx', 'path': 'ill_intent.xlsx'},
     {'name': 'police_fight_flight.xlsx', 'path': 'police_fight_flight.xlsx'},
-    {'name': 'police_avoidance.xlsx', 'path': 'police_avoidance.xlsx'},
+    {'name': 'gblems_expanded.xlsx', 'path': 'gblems_expanded.xlsx'},
     {'name': 'blocks_conditions.xlsx', 'path': 'blocks_conditions.xlsx'},
     {'name': 'gblems_target.xlsx', 'path': 'gblems_target.xlsx'},
-    {'name': 'gblems_expanded.xlsx', 'path': 'gblems_expanded.xlsx'},
+    {'name': 'police_avoidance.xlsx', 'path': 'police_avoidance.xlsx'},
     {'name': 'group_membership.xlsx', 'path': 'group_membership.xlsx'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
   ]
@@ -1718,28 +1718,6 @@ var nine_pff;
 var pff_response;
 var min_pff;
 var max_pff;
-var police_avoidance_setClock;
-var pa_questions;
-var zero_pa;
-var one_pa;
-var two_pa;
-var three_pa;
-var pa_response;
-var min_pa;
-var max_pa;
-var individual_diff_introClock;
-var individual_diffs_instructions;
-var begin_individual_diffs;
-var gblems_setClock;
-var gblems_questions;
-var one_gblems;
-var two_gblems;
-var three_gblems;
-var four_gblems;
-var five_gblems;
-var gblems_response;
-var min_gblems;
-var max_gblems;
 var gblems_expanded_setClock;
 var gblems_e_questions;
 var one_gblemse;
@@ -1754,6 +1732,28 @@ var nine_gblemse;
 var gblemse_response;
 var min_gblemse;
 var max_gblemse;
+var individual_diff_introClock;
+var individual_diffs_instructions;
+var begin_individual_diffs;
+var gblems_setClock;
+var gblems_questions;
+var one_gblems;
+var two_gblems;
+var three_gblems;
+var four_gblems;
+var five_gblems;
+var gblems_response;
+var min_gblems;
+var max_gblems;
+var police_avoidance_setClock;
+var pa_questions;
+var zero_pa;
+var one_pa;
+var two_pa;
+var three_pa;
+var pa_response;
+var min_pa;
+var max_pa;
 var group_mem_setClock;
 var group_mem_questions;
 var one_gm;
@@ -2189,210 +2189,6 @@ async function experimentInit() {
     depth: -12.0 
   });
   
-  // Initialize components for Routine "police_avoidance_set"
-  police_avoidance_setClock = new util.Clock();
-  pa_questions = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'pa_questions',
-    text: '',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [0, 150], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: 0.0 
-  });
-  
-  zero_pa = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'zero_pa',
-    text: '0',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [(- 150), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -1.0 
-  });
-  
-  one_pa = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'one_pa',
-    text: '1',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [(- 50), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -2.0 
-  });
-  
-  two_pa = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'two_pa',
-    text: '2',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [50, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -3.0 
-  });
-  
-  three_pa = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'three_pa',
-    text: '3',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [150, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -4.0 
-  });
-  
-  pa_response = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
-  
-  min_pa = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'min_pa',
-    text: '',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [(- 150), 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -6.0 
-  });
-  
-  max_pa = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'max_pa',
-    text: '',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [150, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -7.0 
-  });
-  
-  // Initialize components for Routine "individual_diff_intro"
-  individual_diff_introClock = new util.Clock();
-  individual_diffs_instructions = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'individual_diffs_instructions',
-    text: 'Thank you for your responses!\n\nWe now have a number of questions to ask you about how you perceive the world around you.\n\nThese questions will ask you to rate how much you agree or disagree with a given statement. Please read each statement carefully and respond as truthfully as possible. For each item, press the corresponding numeric value on the NUMERIC KEYPAD to enter your response. Once you press an answer key, your response will be immediately recorded so please be thoughtful about your answers.\n\nThere are no right or wrong answers. Press the SPACE BAR to begin.',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [0, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: 0.0 
-  });
-  
-  begin_individual_diffs = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
-  
-  // Initialize components for Routine "gblems_set"
-  gblems_setClock = new util.Clock();
-  gblems_questions = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'gblems_questions',
-    text: '',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [0, 150], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: 0.0 
-  });
-  
-  one_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'one_gblems',
-    text: '1',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [(- 200), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -1.0 
-  });
-  
-  two_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'two_gblems',
-    text: '2',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [(- 100), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -2.0 
-  });
-  
-  three_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'three_gblems',
-    text: '3',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [0, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -3.0 
-  });
-  
-  four_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'four_gblems',
-    text: '4',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [100, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -4.0 
-  });
-  
-  five_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'five_gblems',
-    text: '5',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [200, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -5.0 
-  });
-  
-  gblems_response = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
-  
-  min_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'min_gblems',
-    text: '',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [(- 200), 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -7.0 
-  });
-  
-  max_gblems = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'max_gblems',
-    text: '',
-    font: 'Avenir Next',
-    units: undefined, 
-    pos: [200, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -8.0 
-  });
-  
   // Initialize components for Routine "gblems_expanded_set"
   gblems_expanded_setClock = new util.Clock();
   gblems_e_questions = new visual.TextStim({
@@ -2539,6 +2335,210 @@ async function experimentInit() {
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: -12.0 
+  });
+  
+  // Initialize components for Routine "individual_diff_intro"
+  individual_diff_introClock = new util.Clock();
+  individual_diffs_instructions = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'individual_diffs_instructions',
+    text: 'Thank you for your responses!\n\nWe now have a number of questions to ask you about how you perceive the world around you.\n\nThese questions will ask you to rate how much you agree or disagree with a given statement. Please read each statement carefully and respond as truthfully as possible. For each item, press the corresponding numeric value on the NUMERIC KEYPAD to enter your response. Once you press an answer key, your response will be immediately recorded so please be thoughtful about your answers.\n\nThere are no right or wrong answers. Press the SPACE BAR to begin.',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  begin_individual_diffs = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  // Initialize components for Routine "gblems_set"
+  gblems_setClock = new util.Clock();
+  gblems_questions = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'gblems_questions',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, 150], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  one_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'one_gblems',
+    text: '1',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 200), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+  two_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'two_gblems',
+    text: '2',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 100), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -2.0 
+  });
+  
+  three_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'three_gblems',
+    text: '3',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -3.0 
+  });
+  
+  four_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'four_gblems',
+    text: '4',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [100, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -4.0 
+  });
+  
+  five_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'five_gblems',
+    text: '5',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [200, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -5.0 
+  });
+  
+  gblems_response = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  min_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'min_gblems',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 200), 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -7.0 
+  });
+  
+  max_gblems = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'max_gblems',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [200, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -8.0 
+  });
+  
+  // Initialize components for Routine "police_avoidance_set"
+  police_avoidance_setClock = new util.Clock();
+  pa_questions = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'pa_questions',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [0, 150], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  zero_pa = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'zero_pa',
+    text: '0',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 150), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+  one_pa = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'one_pa',
+    text: '1',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 50), (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -2.0 
+  });
+  
+  two_pa = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'two_pa',
+    text: '2',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [50, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -3.0 
+  });
+  
+  three_pa = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'three_pa',
+    text: '3',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [150, (- 50)], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -4.0 
+  });
+  
+  pa_response = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  min_pa = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'min_pa',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [(- 150), 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -6.0 
+  });
+  
+  max_pa = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'max_pa',
+    text: '',
+    font: 'Avenir Next',
+    units: undefined, 
+    pos: [150, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -7.0 
   });
   
   // Initialize components for Routine "group_mem_set"
@@ -3261,31 +3261,31 @@ function pff_loopLoopEndIteration(scheduler, snapshot) {
 }
 
 
-var pa_loop;
-function pa_loopLoopBegin(pa_loopLoopScheduler, snapshot) {
+var gblems_exp_loop;
+function gblems_exp_loopLoopBegin(gblems_exp_loopLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
     
     // set up handler to look after randomisation of conditions etc
-    pa_loop = new TrialHandler({
+    gblems_exp_loop = new TrialHandler({
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'police_avoidance.xlsx',
-      seed: undefined, name: 'pa_loop'
+      trialList: 'gblems_expanded.xlsx',
+      seed: undefined, name: 'gblems_exp_loop'
     });
-    psychoJS.experiment.addLoop(pa_loop); // add the loop to the experiment
-    currentLoop = pa_loop;  // we're now the current loop
+    psychoJS.experiment.addLoop(gblems_exp_loop); // add the loop to the experiment
+    currentLoop = gblems_exp_loop;  // we're now the current loop
     
     // Schedule all the trials in the trialList:
-    pa_loop.forEach(function() {
-      snapshot = pa_loop.getSnapshot();
+    gblems_exp_loop.forEach(function() {
+      snapshot = gblems_exp_loop.getSnapshot();
     
-      pa_loopLoopScheduler.add(importConditions(snapshot));
-      pa_loopLoopScheduler.add(police_avoidance_setRoutineBegin(snapshot));
-      pa_loopLoopScheduler.add(police_avoidance_setRoutineEachFrame());
-      pa_loopLoopScheduler.add(police_avoidance_setRoutineEnd(snapshot));
-      pa_loopLoopScheduler.add(pa_loopLoopEndIteration(pa_loopLoopScheduler, snapshot));
+      gblems_exp_loopLoopScheduler.add(importConditions(snapshot));
+      gblems_exp_loopLoopScheduler.add(gblems_expanded_setRoutineBegin(snapshot));
+      gblems_exp_loopLoopScheduler.add(gblems_expanded_setRoutineEachFrame());
+      gblems_exp_loopLoopScheduler.add(gblems_expanded_setRoutineEnd(snapshot));
+      gblems_exp_loopLoopScheduler.add(gblems_exp_loopLoopEndIteration(gblems_exp_loopLoopScheduler, snapshot));
     });
     
     return Scheduler.Event.NEXT;
@@ -3293,9 +3293,9 @@ function pa_loopLoopBegin(pa_loopLoopScheduler, snapshot) {
 }
 
 
-async function pa_loopLoopEnd() {
+async function gblems_exp_loopLoopEnd() {
   // terminate loop
-  psychoJS.experiment.removeLoop(pa_loop);
+  psychoJS.experiment.removeLoop(gblems_exp_loop);
   // update the current loop from the ExperimentHandler
   if (psychoJS.experiment._unfinishedLoops.length>0)
     currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
@@ -3305,7 +3305,7 @@ async function pa_loopLoopEnd() {
 }
 
 
-function pa_loopLoopEndIteration(scheduler, snapshot) {
+function gblems_exp_loopLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
   return async function () {
     if (typeof snapshot !== 'undefined') {
@@ -3350,10 +3350,10 @@ function scales_loopLoopBegin(scales_loopLoopScheduler, snapshot) {
       scales_loopLoopScheduler.add(gblems_loopLoopBegin(gblems_loopLoopScheduler, snapshot));
       scales_loopLoopScheduler.add(gblems_loopLoopScheduler);
       scales_loopLoopScheduler.add(gblems_loopLoopEnd);
-      const gblems_expanded_loopLoopScheduler = new Scheduler(psychoJS);
-      scales_loopLoopScheduler.add(gblems_expanded_loopLoopBegin(gblems_expanded_loopLoopScheduler, snapshot));
-      scales_loopLoopScheduler.add(gblems_expanded_loopLoopScheduler);
-      scales_loopLoopScheduler.add(gblems_expanded_loopLoopEnd);
+      const pa_loopLoopScheduler = new Scheduler(psychoJS);
+      scales_loopLoopScheduler.add(pa_loopLoopBegin(pa_loopLoopScheduler, snapshot));
+      scales_loopLoopScheduler.add(pa_loopLoopScheduler);
+      scales_loopLoopScheduler.add(pa_loopLoopEnd);
       const group_membership_loopLoopScheduler = new Scheduler(psychoJS);
       scales_loopLoopScheduler.add(group_membership_loopLoopBegin(group_membership_loopLoopScheduler, snapshot));
       scales_loopLoopScheduler.add(group_membership_loopLoopScheduler);
@@ -3430,31 +3430,31 @@ function gblems_loopLoopEndIteration(scheduler, snapshot) {
 }
 
 
-var gblems_expanded_loop;
-function gblems_expanded_loopLoopBegin(gblems_expanded_loopLoopScheduler, snapshot) {
+var pa_loop;
+function pa_loopLoopBegin(pa_loopLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
     
     // set up handler to look after randomisation of conditions etc
-    gblems_expanded_loop = new TrialHandler({
+    pa_loop = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: Number(block_name == 'gblems_expanded_set'), method: TrialHandler.Method.RANDOM,
+      nReps: Number(block_name == 'police_avoidance'), method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'gblems_expanded.xlsx',
-      seed: undefined, name: 'gblems_expanded_loop'
+      trialList: 'police_avoidance.xlsx',
+      seed: undefined, name: 'pa_loop'
     });
-    psychoJS.experiment.addLoop(gblems_expanded_loop); // add the loop to the experiment
-    currentLoop = gblems_expanded_loop;  // we're now the current loop
+    psychoJS.experiment.addLoop(pa_loop); // add the loop to the experiment
+    currentLoop = pa_loop;  // we're now the current loop
     
     // Schedule all the trials in the trialList:
-    gblems_expanded_loop.forEach(function() {
-      snapshot = gblems_expanded_loop.getSnapshot();
+    pa_loop.forEach(function() {
+      snapshot = pa_loop.getSnapshot();
     
-      gblems_expanded_loopLoopScheduler.add(importConditions(snapshot));
-      gblems_expanded_loopLoopScheduler.add(gblems_expanded_setRoutineBegin(snapshot));
-      gblems_expanded_loopLoopScheduler.add(gblems_expanded_setRoutineEachFrame());
-      gblems_expanded_loopLoopScheduler.add(gblems_expanded_setRoutineEnd(snapshot));
-      gblems_expanded_loopLoopScheduler.add(gblems_expanded_loopLoopEndIteration(gblems_expanded_loopLoopScheduler, snapshot));
+      pa_loopLoopScheduler.add(importConditions(snapshot));
+      pa_loopLoopScheduler.add(police_avoidance_setRoutineBegin(snapshot));
+      pa_loopLoopScheduler.add(police_avoidance_setRoutineEachFrame());
+      pa_loopLoopScheduler.add(police_avoidance_setRoutineEnd(snapshot));
+      pa_loopLoopScheduler.add(pa_loopLoopEndIteration(pa_loopLoopScheduler, snapshot));
     });
     
     return Scheduler.Event.NEXT;
@@ -3462,9 +3462,9 @@ function gblems_expanded_loopLoopBegin(gblems_expanded_loopLoopScheduler, snapsh
 }
 
 
-async function gblems_expanded_loopLoopEnd() {
+async function pa_loopLoopEnd() {
   // terminate loop
-  psychoJS.experiment.removeLoop(gblems_expanded_loop);
+  psychoJS.experiment.removeLoop(pa_loop);
   // update the current loop from the ExperimentHandler
   if (psychoJS.experiment._unfinishedLoops.length>0)
     currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
@@ -3474,7 +3474,7 @@ async function gblems_expanded_loopLoopEnd() {
 }
 
 
-function gblems_expanded_loopLoopEndIteration(scheduler, snapshot) {
+function pa_loopLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
   return async function () {
     if (typeof snapshot !== 'undefined') {
@@ -4652,42 +4652,47 @@ function police_fight_flight_setRoutineEnd(snapshot) {
 }
 
 
-var police_avoidance_setMaxDurationReached;
-var _pa_response_allKeys;
-var police_avoidance_setMaxDuration;
-var police_avoidance_setComponents;
-function police_avoidance_setRoutineBegin(snapshot) {
+var gblems_expanded_setMaxDurationReached;
+var _gblemse_response_allKeys;
+var gblems_expanded_setMaxDuration;
+var gblems_expanded_setComponents;
+function gblems_expanded_setRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
-    //--- Prepare to start Routine 'police_avoidance_set' ---
+    //--- Prepare to start Routine 'gblems_expanded_set' ---
     t = 0;
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
-    police_avoidance_setClock.reset();
+    gblems_expanded_setClock.reset();
     routineTimer.reset();
-    police_avoidance_setMaxDurationReached = false;
+    gblems_expanded_setMaxDurationReached = false;
     // update component parameters for each repeat
-    pa_questions.setText(question);
-    pa_response.keys = undefined;
-    pa_response.rt = undefined;
-    _pa_response_allKeys = [];
-    min_pa.setText(minimum);
-    max_pa.setText(maximum);
-    psychoJS.experiment.addData('police_avoidance_set.started', globalClock.getTime());
-    police_avoidance_setMaxDuration = null
+    gblems_e_questions.setText(question);
+    gblemse_response.keys = undefined;
+    gblemse_response.rt = undefined;
+    _gblemse_response_allKeys = [];
+    min_gblemse.setText(minimum);
+    max_gblemse.setText(maximum);
+    psychoJS.experiment.addData('gblems_expanded_set.started', globalClock.getTime());
+    gblems_expanded_setMaxDuration = null
     // keep track of which components have finished
-    police_avoidance_setComponents = [];
-    police_avoidance_setComponents.push(pa_questions);
-    police_avoidance_setComponents.push(zero_pa);
-    police_avoidance_setComponents.push(one_pa);
-    police_avoidance_setComponents.push(two_pa);
-    police_avoidance_setComponents.push(three_pa);
-    police_avoidance_setComponents.push(pa_response);
-    police_avoidance_setComponents.push(min_pa);
-    police_avoidance_setComponents.push(max_pa);
+    gblems_expanded_setComponents = [];
+    gblems_expanded_setComponents.push(gblems_e_questions);
+    gblems_expanded_setComponents.push(one_gblemse);
+    gblems_expanded_setComponents.push(two_gblemse);
+    gblems_expanded_setComponents.push(three_gblemse);
+    gblems_expanded_setComponents.push(four_gblemse);
+    gblems_expanded_setComponents.push(five_gblemse);
+    gblems_expanded_setComponents.push(six_gblemse);
+    gblems_expanded_setComponents.push(seven_gblemse);
+    gblems_expanded_setComponents.push(eight_gblemse);
+    gblems_expanded_setComponents.push(nine_gblemse);
+    gblems_expanded_setComponents.push(gblemse_response);
+    gblems_expanded_setComponents.push(min_gblemse);
+    gblems_expanded_setComponents.push(max_gblemse);
     
-    police_avoidance_setComponents.forEach( function(thisComponent) {
+    gblems_expanded_setComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
        });
@@ -4696,106 +4701,156 @@ function police_avoidance_setRoutineBegin(snapshot) {
 }
 
 
-function police_avoidance_setRoutineEachFrame() {
+function gblems_expanded_setRoutineEachFrame() {
   return async function () {
-    //--- Loop for each frame of Routine 'police_avoidance_set' ---
+    //--- Loop for each frame of Routine 'gblems_expanded_set' ---
     // get current time
-    t = police_avoidance_setClock.getTime();
+    t = gblems_expanded_setClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *pa_questions* updates
-    if (frameN >= 0.0 && pa_questions.status === PsychoJS.Status.NOT_STARTED) {
+    // *gblems_e_questions* updates
+    if (frameN >= 0.0 && gblems_e_questions.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      pa_questions.tStart = t;  // (not accounting for frame time here)
-      pa_questions.frameNStart = frameN;  // exact frame index
+      gblems_e_questions.tStart = t;  // (not accounting for frame time here)
+      gblems_e_questions.frameNStart = frameN;  // exact frame index
       
-      pa_questions.setAutoDraw(true);
+      gblems_e_questions.setAutoDraw(true);
     }
     
     
-    // *zero_pa* updates
-    if (frameN >= 0.0 && zero_pa.status === PsychoJS.Status.NOT_STARTED) {
+    // *one_gblemse* updates
+    if (frameN >= 0.0 && one_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      zero_pa.tStart = t;  // (not accounting for frame time here)
-      zero_pa.frameNStart = frameN;  // exact frame index
+      one_gblemse.tStart = t;  // (not accounting for frame time here)
+      one_gblemse.frameNStart = frameN;  // exact frame index
       
-      zero_pa.setAutoDraw(true);
+      one_gblemse.setAutoDraw(true);
     }
     
     
-    // *one_pa* updates
-    if (frameN >= 0.0 && one_pa.status === PsychoJS.Status.NOT_STARTED) {
+    // *two_gblemse* updates
+    if (frameN >= 0.0 && two_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      one_pa.tStart = t;  // (not accounting for frame time here)
-      one_pa.frameNStart = frameN;  // exact frame index
+      two_gblemse.tStart = t;  // (not accounting for frame time here)
+      two_gblemse.frameNStart = frameN;  // exact frame index
       
-      one_pa.setAutoDraw(true);
+      two_gblemse.setAutoDraw(true);
     }
     
     
-    // *two_pa* updates
-    if (frameN >= 0.0 && two_pa.status === PsychoJS.Status.NOT_STARTED) {
+    // *three_gblemse* updates
+    if (frameN >= 0.0 && three_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      two_pa.tStart = t;  // (not accounting for frame time here)
-      two_pa.frameNStart = frameN;  // exact frame index
+      three_gblemse.tStart = t;  // (not accounting for frame time here)
+      three_gblemse.frameNStart = frameN;  // exact frame index
       
-      two_pa.setAutoDraw(true);
+      three_gblemse.setAutoDraw(true);
     }
     
     
-    // *three_pa* updates
-    if (frameN >= 0.0 && three_pa.status === PsychoJS.Status.NOT_STARTED) {
+    // *four_gblemse* updates
+    if (frameN >= 0.0 && four_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      three_pa.tStart = t;  // (not accounting for frame time here)
-      three_pa.frameNStart = frameN;  // exact frame index
+      four_gblemse.tStart = t;  // (not accounting for frame time here)
+      four_gblemse.frameNStart = frameN;  // exact frame index
       
-      three_pa.setAutoDraw(true);
+      four_gblemse.setAutoDraw(true);
     }
     
     
-    // *pa_response* updates
-    if (frameN >= 0.0 && pa_response.status === PsychoJS.Status.NOT_STARTED) {
+    // *five_gblemse* updates
+    if (frameN >= 0.0 && five_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      pa_response.tStart = t;  // (not accounting for frame time here)
-      pa_response.frameNStart = frameN;  // exact frame index
+      five_gblemse.tStart = t;  // (not accounting for frame time here)
+      five_gblemse.frameNStart = frameN;  // exact frame index
+      
+      five_gblemse.setAutoDraw(true);
+    }
+    
+    
+    // *six_gblemse* updates
+    if (frameN >= 0.0 && six_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      six_gblemse.tStart = t;  // (not accounting for frame time here)
+      six_gblemse.frameNStart = frameN;  // exact frame index
+      
+      six_gblemse.setAutoDraw(true);
+    }
+    
+    
+    // *seven_gblemse* updates
+    if (frameN >= 0.0 && seven_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      seven_gblemse.tStart = t;  // (not accounting for frame time here)
+      seven_gblemse.frameNStart = frameN;  // exact frame index
+      
+      seven_gblemse.setAutoDraw(true);
+    }
+    
+    
+    // *eight_gblemse* updates
+    if (frameN >= 0.0 && eight_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      eight_gblemse.tStart = t;  // (not accounting for frame time here)
+      eight_gblemse.frameNStart = frameN;  // exact frame index
+      
+      eight_gblemse.setAutoDraw(true);
+    }
+    
+    
+    // *nine_gblemse* updates
+    if (frameN >= 0.0 && nine_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      nine_gblemse.tStart = t;  // (not accounting for frame time here)
+      nine_gblemse.frameNStart = frameN;  // exact frame index
+      
+      nine_gblemse.setAutoDraw(true);
+    }
+    
+    
+    // *gblemse_response* updates
+    if (frameN >= 0.0 && gblemse_response.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      gblemse_response.tStart = t;  // (not accounting for frame time here)
+      gblemse_response.frameNStart = frameN;  // exact frame index
       
       // keyboard checking is just starting
-      psychoJS.window.callOnFlip(function() { pa_response.clock.reset(); });  // t=0 on next screen flip
-      psychoJS.window.callOnFlip(function() { pa_response.start(); }); // start on screen flip
-      psychoJS.window.callOnFlip(function() { pa_response.clearEvents(); });
+      psychoJS.window.callOnFlip(function() { gblemse_response.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { gblemse_response.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { gblemse_response.clearEvents(); });
     }
     
-    if (pa_response.status === PsychoJS.Status.STARTED) {
-      let theseKeys = pa_response.getKeys({keyList: ['0', '1', '2', '3'], waitRelease: false});
-      _pa_response_allKeys = _pa_response_allKeys.concat(theseKeys);
-      if (_pa_response_allKeys.length > 0) {
-        pa_response.keys = _pa_response_allKeys[_pa_response_allKeys.length - 1].name;  // just the last key pressed
-        pa_response.rt = _pa_response_allKeys[_pa_response_allKeys.length - 1].rt;
-        pa_response.duration = _pa_response_allKeys[_pa_response_allKeys.length - 1].duration;
+    if (gblemse_response.status === PsychoJS.Status.STARTED) {
+      let theseKeys = gblemse_response.getKeys({keyList: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], waitRelease: false});
+      _gblemse_response_allKeys = _gblemse_response_allKeys.concat(theseKeys);
+      if (_gblemse_response_allKeys.length > 0) {
+        gblemse_response.keys = _gblemse_response_allKeys[_gblemse_response_allKeys.length - 1].name;  // just the last key pressed
+        gblemse_response.rt = _gblemse_response_allKeys[_gblemse_response_allKeys.length - 1].rt;
+        gblemse_response.duration = _gblemse_response_allKeys[_gblemse_response_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
     }
     
     
-    // *min_pa* updates
-    if (frameN >= 0.0 && min_pa.status === PsychoJS.Status.NOT_STARTED) {
+    // *min_gblemse* updates
+    if (frameN >= 0.0 && min_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      min_pa.tStart = t;  // (not accounting for frame time here)
-      min_pa.frameNStart = frameN;  // exact frame index
+      min_gblemse.tStart = t;  // (not accounting for frame time here)
+      min_gblemse.frameNStart = frameN;  // exact frame index
       
-      min_pa.setAutoDraw(true);
+      min_gblemse.setAutoDraw(true);
     }
     
     
-    // *max_pa* updates
-    if (frameN >= 0.0 && max_pa.status === PsychoJS.Status.NOT_STARTED) {
+    // *max_gblemse* updates
+    if (frameN >= 0.0 && max_gblemse.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      max_pa.tStart = t;  // (not accounting for frame time here)
-      max_pa.frameNStart = frameN;  // exact frame index
+      max_gblemse.tStart = t;  // (not accounting for frame time here)
+      max_gblemse.frameNStart = frameN;  // exact frame index
       
-      max_pa.setAutoDraw(true);
+      max_gblemse.setAutoDraw(true);
     }
     
     // check for quit (typically the Esc key)
@@ -4809,7 +4864,7 @@ function police_avoidance_setRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    police_avoidance_setComponents.forEach( function(thisComponent) {
+    gblems_expanded_setComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
       }
@@ -4825,28 +4880,28 @@ function police_avoidance_setRoutineEachFrame() {
 }
 
 
-function police_avoidance_setRoutineEnd(snapshot) {
+function gblems_expanded_setRoutineEnd(snapshot) {
   return async function () {
-    //--- Ending Routine 'police_avoidance_set' ---
-    police_avoidance_setComponents.forEach( function(thisComponent) {
+    //--- Ending Routine 'gblems_expanded_set' ---
+    gblems_expanded_setComponents.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
     });
-    psychoJS.experiment.addData('police_avoidance_set.stopped', globalClock.getTime());
+    psychoJS.experiment.addData('gblems_expanded_set.stopped', globalClock.getTime());
     // update the trial handler
     if (currentLoop instanceof MultiStairHandler) {
-      currentLoop.addResponse(pa_response.corr, level);
+      currentLoop.addResponse(gblemse_response.corr, level);
     }
-    psychoJS.experiment.addData('pa_response.keys', pa_response.keys);
-    if (typeof pa_response.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('pa_response.rt', pa_response.rt);
-        psychoJS.experiment.addData('pa_response.duration', pa_response.duration);
+    psychoJS.experiment.addData('gblemse_response.keys', gblemse_response.keys);
+    if (typeof gblemse_response.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('gblemse_response.rt', gblemse_response.rt);
+        psychoJS.experiment.addData('gblemse_response.duration', gblemse_response.duration);
         routineTimer.reset();
         }
     
-    pa_response.stop();
-    // the Routine "police_avoidance_set" was not non-slip safe, so reset the non-slip timer
+    gblemse_response.stop();
+    // the Routine "gblems_expanded_set" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row
@@ -5212,47 +5267,42 @@ function gblems_setRoutineEnd(snapshot) {
 }
 
 
-var gblems_expanded_setMaxDurationReached;
-var _gblemse_response_allKeys;
-var gblems_expanded_setMaxDuration;
-var gblems_expanded_setComponents;
-function gblems_expanded_setRoutineBegin(snapshot) {
+var police_avoidance_setMaxDurationReached;
+var _pa_response_allKeys;
+var police_avoidance_setMaxDuration;
+var police_avoidance_setComponents;
+function police_avoidance_setRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
-    //--- Prepare to start Routine 'gblems_expanded_set' ---
+    //--- Prepare to start Routine 'police_avoidance_set' ---
     t = 0;
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
-    gblems_expanded_setClock.reset();
+    police_avoidance_setClock.reset();
     routineTimer.reset();
-    gblems_expanded_setMaxDurationReached = false;
+    police_avoidance_setMaxDurationReached = false;
     // update component parameters for each repeat
-    gblems_e_questions.setText(question);
-    gblemse_response.keys = undefined;
-    gblemse_response.rt = undefined;
-    _gblemse_response_allKeys = [];
-    min_gblemse.setText(minimum);
-    max_gblemse.setText(maximum);
-    psychoJS.experiment.addData('gblems_expanded_set.started', globalClock.getTime());
-    gblems_expanded_setMaxDuration = null
+    pa_questions.setText(question);
+    pa_response.keys = undefined;
+    pa_response.rt = undefined;
+    _pa_response_allKeys = [];
+    min_pa.setText(minimum);
+    max_pa.setText(maximum);
+    psychoJS.experiment.addData('police_avoidance_set.started', globalClock.getTime());
+    police_avoidance_setMaxDuration = null
     // keep track of which components have finished
-    gblems_expanded_setComponents = [];
-    gblems_expanded_setComponents.push(gblems_e_questions);
-    gblems_expanded_setComponents.push(one_gblemse);
-    gblems_expanded_setComponents.push(two_gblemse);
-    gblems_expanded_setComponents.push(three_gblemse);
-    gblems_expanded_setComponents.push(four_gblemse);
-    gblems_expanded_setComponents.push(five_gblemse);
-    gblems_expanded_setComponents.push(six_gblemse);
-    gblems_expanded_setComponents.push(seven_gblemse);
-    gblems_expanded_setComponents.push(eight_gblemse);
-    gblems_expanded_setComponents.push(nine_gblemse);
-    gblems_expanded_setComponents.push(gblemse_response);
-    gblems_expanded_setComponents.push(min_gblemse);
-    gblems_expanded_setComponents.push(max_gblemse);
+    police_avoidance_setComponents = [];
+    police_avoidance_setComponents.push(pa_questions);
+    police_avoidance_setComponents.push(zero_pa);
+    police_avoidance_setComponents.push(one_pa);
+    police_avoidance_setComponents.push(two_pa);
+    police_avoidance_setComponents.push(three_pa);
+    police_avoidance_setComponents.push(pa_response);
+    police_avoidance_setComponents.push(min_pa);
+    police_avoidance_setComponents.push(max_pa);
     
-    gblems_expanded_setComponents.forEach( function(thisComponent) {
+    police_avoidance_setComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
        });
@@ -5261,156 +5311,106 @@ function gblems_expanded_setRoutineBegin(snapshot) {
 }
 
 
-function gblems_expanded_setRoutineEachFrame() {
+function police_avoidance_setRoutineEachFrame() {
   return async function () {
-    //--- Loop for each frame of Routine 'gblems_expanded_set' ---
+    //--- Loop for each frame of Routine 'police_avoidance_set' ---
     // get current time
-    t = gblems_expanded_setClock.getTime();
+    t = police_avoidance_setClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *gblems_e_questions* updates
-    if (frameN >= 0.0 && gblems_e_questions.status === PsychoJS.Status.NOT_STARTED) {
+    // *pa_questions* updates
+    if (frameN >= 0.0 && pa_questions.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      gblems_e_questions.tStart = t;  // (not accounting for frame time here)
-      gblems_e_questions.frameNStart = frameN;  // exact frame index
+      pa_questions.tStart = t;  // (not accounting for frame time here)
+      pa_questions.frameNStart = frameN;  // exact frame index
       
-      gblems_e_questions.setAutoDraw(true);
+      pa_questions.setAutoDraw(true);
     }
     
     
-    // *one_gblemse* updates
-    if (frameN >= 0.0 && one_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *zero_pa* updates
+    if (frameN >= 0.0 && zero_pa.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      one_gblemse.tStart = t;  // (not accounting for frame time here)
-      one_gblemse.frameNStart = frameN;  // exact frame index
+      zero_pa.tStart = t;  // (not accounting for frame time here)
+      zero_pa.frameNStart = frameN;  // exact frame index
       
-      one_gblemse.setAutoDraw(true);
+      zero_pa.setAutoDraw(true);
     }
     
     
-    // *two_gblemse* updates
-    if (frameN >= 0.0 && two_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *one_pa* updates
+    if (frameN >= 0.0 && one_pa.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      two_gblemse.tStart = t;  // (not accounting for frame time here)
-      two_gblemse.frameNStart = frameN;  // exact frame index
+      one_pa.tStart = t;  // (not accounting for frame time here)
+      one_pa.frameNStart = frameN;  // exact frame index
       
-      two_gblemse.setAutoDraw(true);
+      one_pa.setAutoDraw(true);
     }
     
     
-    // *three_gblemse* updates
-    if (frameN >= 0.0 && three_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *two_pa* updates
+    if (frameN >= 0.0 && two_pa.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      three_gblemse.tStart = t;  // (not accounting for frame time here)
-      three_gblemse.frameNStart = frameN;  // exact frame index
+      two_pa.tStart = t;  // (not accounting for frame time here)
+      two_pa.frameNStart = frameN;  // exact frame index
       
-      three_gblemse.setAutoDraw(true);
+      two_pa.setAutoDraw(true);
     }
     
     
-    // *four_gblemse* updates
-    if (frameN >= 0.0 && four_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *three_pa* updates
+    if (frameN >= 0.0 && three_pa.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      four_gblemse.tStart = t;  // (not accounting for frame time here)
-      four_gblemse.frameNStart = frameN;  // exact frame index
+      three_pa.tStart = t;  // (not accounting for frame time here)
+      three_pa.frameNStart = frameN;  // exact frame index
       
-      four_gblemse.setAutoDraw(true);
+      three_pa.setAutoDraw(true);
     }
     
     
-    // *five_gblemse* updates
-    if (frameN >= 0.0 && five_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *pa_response* updates
+    if (frameN >= 0.0 && pa_response.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      five_gblemse.tStart = t;  // (not accounting for frame time here)
-      five_gblemse.frameNStart = frameN;  // exact frame index
-      
-      five_gblemse.setAutoDraw(true);
-    }
-    
-    
-    // *six_gblemse* updates
-    if (frameN >= 0.0 && six_gblemse.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      six_gblemse.tStart = t;  // (not accounting for frame time here)
-      six_gblemse.frameNStart = frameN;  // exact frame index
-      
-      six_gblemse.setAutoDraw(true);
-    }
-    
-    
-    // *seven_gblemse* updates
-    if (frameN >= 0.0 && seven_gblemse.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      seven_gblemse.tStart = t;  // (not accounting for frame time here)
-      seven_gblemse.frameNStart = frameN;  // exact frame index
-      
-      seven_gblemse.setAutoDraw(true);
-    }
-    
-    
-    // *eight_gblemse* updates
-    if (frameN >= 0.0 && eight_gblemse.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      eight_gblemse.tStart = t;  // (not accounting for frame time here)
-      eight_gblemse.frameNStart = frameN;  // exact frame index
-      
-      eight_gblemse.setAutoDraw(true);
-    }
-    
-    
-    // *nine_gblemse* updates
-    if (frameN >= 0.0 && nine_gblemse.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      nine_gblemse.tStart = t;  // (not accounting for frame time here)
-      nine_gblemse.frameNStart = frameN;  // exact frame index
-      
-      nine_gblemse.setAutoDraw(true);
-    }
-    
-    
-    // *gblemse_response* updates
-    if (frameN >= 0.0 && gblemse_response.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      gblemse_response.tStart = t;  // (not accounting for frame time here)
-      gblemse_response.frameNStart = frameN;  // exact frame index
+      pa_response.tStart = t;  // (not accounting for frame time here)
+      pa_response.frameNStart = frameN;  // exact frame index
       
       // keyboard checking is just starting
-      psychoJS.window.callOnFlip(function() { gblemse_response.clock.reset(); });  // t=0 on next screen flip
-      psychoJS.window.callOnFlip(function() { gblemse_response.start(); }); // start on screen flip
-      psychoJS.window.callOnFlip(function() { gblemse_response.clearEvents(); });
+      psychoJS.window.callOnFlip(function() { pa_response.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { pa_response.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { pa_response.clearEvents(); });
     }
     
-    if (gblemse_response.status === PsychoJS.Status.STARTED) {
-      let theseKeys = gblemse_response.getKeys({keyList: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], waitRelease: false});
-      _gblemse_response_allKeys = _gblemse_response_allKeys.concat(theseKeys);
-      if (_gblemse_response_allKeys.length > 0) {
-        gblemse_response.keys = _gblemse_response_allKeys[_gblemse_response_allKeys.length - 1].name;  // just the last key pressed
-        gblemse_response.rt = _gblemse_response_allKeys[_gblemse_response_allKeys.length - 1].rt;
-        gblemse_response.duration = _gblemse_response_allKeys[_gblemse_response_allKeys.length - 1].duration;
+    if (pa_response.status === PsychoJS.Status.STARTED) {
+      let theseKeys = pa_response.getKeys({keyList: ['0', '1', '2', '3'], waitRelease: false});
+      _pa_response_allKeys = _pa_response_allKeys.concat(theseKeys);
+      if (_pa_response_allKeys.length > 0) {
+        pa_response.keys = _pa_response_allKeys[_pa_response_allKeys.length - 1].name;  // just the last key pressed
+        pa_response.rt = _pa_response_allKeys[_pa_response_allKeys.length - 1].rt;
+        pa_response.duration = _pa_response_allKeys[_pa_response_allKeys.length - 1].duration;
         // a response ends the routine
         continueRoutine = false;
       }
     }
     
     
-    // *min_gblemse* updates
-    if (frameN >= 0.0 && min_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *min_pa* updates
+    if (frameN >= 0.0 && min_pa.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      min_gblemse.tStart = t;  // (not accounting for frame time here)
-      min_gblemse.frameNStart = frameN;  // exact frame index
+      min_pa.tStart = t;  // (not accounting for frame time here)
+      min_pa.frameNStart = frameN;  // exact frame index
       
-      min_gblemse.setAutoDraw(true);
+      min_pa.setAutoDraw(true);
     }
     
     
-    // *max_gblemse* updates
-    if (frameN >= 0.0 && max_gblemse.status === PsychoJS.Status.NOT_STARTED) {
+    // *max_pa* updates
+    if (frameN >= 0.0 && max_pa.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      max_gblemse.tStart = t;  // (not accounting for frame time here)
-      max_gblemse.frameNStart = frameN;  // exact frame index
+      max_pa.tStart = t;  // (not accounting for frame time here)
+      max_pa.frameNStart = frameN;  // exact frame index
       
-      max_gblemse.setAutoDraw(true);
+      max_pa.setAutoDraw(true);
     }
     
     // check for quit (typically the Esc key)
@@ -5424,7 +5424,7 @@ function gblems_expanded_setRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    gblems_expanded_setComponents.forEach( function(thisComponent) {
+    police_avoidance_setComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
       }
@@ -5440,28 +5440,28 @@ function gblems_expanded_setRoutineEachFrame() {
 }
 
 
-function gblems_expanded_setRoutineEnd(snapshot) {
+function police_avoidance_setRoutineEnd(snapshot) {
   return async function () {
-    //--- Ending Routine 'gblems_expanded_set' ---
-    gblems_expanded_setComponents.forEach( function(thisComponent) {
+    //--- Ending Routine 'police_avoidance_set' ---
+    police_avoidance_setComponents.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
     });
-    psychoJS.experiment.addData('gblems_expanded_set.stopped', globalClock.getTime());
+    psychoJS.experiment.addData('police_avoidance_set.stopped', globalClock.getTime());
     // update the trial handler
     if (currentLoop instanceof MultiStairHandler) {
-      currentLoop.addResponse(gblemse_response.corr, level);
+      currentLoop.addResponse(pa_response.corr, level);
     }
-    psychoJS.experiment.addData('gblemse_response.keys', gblemse_response.keys);
-    if (typeof gblemse_response.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('gblemse_response.rt', gblemse_response.rt);
-        psychoJS.experiment.addData('gblemse_response.duration', gblemse_response.duration);
+    psychoJS.experiment.addData('pa_response.keys', pa_response.keys);
+    if (typeof pa_response.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('pa_response.rt', pa_response.rt);
+        psychoJS.experiment.addData('pa_response.duration', pa_response.duration);
         routineTimer.reset();
         }
     
-    gblemse_response.stop();
-    // the Routine "gblems_expanded_set" was not non-slip safe, so reset the non-slip timer
+    pa_response.stop();
+    // the Routine "police_avoidance_set" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row
