@@ -1916,7 +1916,7 @@ async function experimentInit() {
   ii_prompt = new visual.TextStim({
     win: psychoJS.window,
     name: 'ii_prompt',
-    text: "Thank you for your responses!\n\nWe would now like to understand how you perceive the police offer's you just pictured.",
+    text: 'Thank you for your responses!\n\nWe would now like to understand how you perceive the police officer you just pictured.',
     font: 'Avenir Next',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 20.0,  wrapWidth: undefined, ori: 0.0,
